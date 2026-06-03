@@ -234,8 +234,16 @@ function generateNextMonthDebts() {
         saveToLocalStorage();
         renderDebts();
         alert(`Sucesso! ${count} dívidas de este mês foram replicadas para o próximo mês.`);
+
     }
 }
+
+ // Executa a primeira renderização ao abrir a aplicação
+        renderDebts();
+
+        // NOVO: Verifica as dívidas do dia logo após renderizar a tela
+        checkDebtsDueToday();
+        //
 
 // Função Corrigida: Só clona dívidas recorrentes do mês atual se elas NÃO estiverem pagas/ocultas
 function generateNextMonthDebts() {
@@ -307,4 +315,44 @@ function generateNextMonthDebts() {
             alert(`Sucesso! ${count} dívidas ativas foram copiadas para o próximo mês.`);
         }
     }
+}
+
+// Função com layout moderno para verificar se existem dívidas vencendo hoje
+function checkDebtsDueToday() {
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const dataHojeFormatada = `${ano}-${mes}-${dia}`;
+
+    // Filtrar dívidas que vencem hoje E que NÃO estão pagas
+    const dividasDeHoje = debts.filter(debt => {
+        return debt.rawDate === dataHojeFormatada && !debt.paid;
+    });
+
+    // Se houver dívidas, monta o layout bonitinho e exibe
+    if (dividasDeHoje.length > 0) {
+        const listContainer = document.getElementById('alertDebtsList');
+        listContainer.innerHTML = ''; // Limpa a lista antes de preencher
+
+        dividasDeHoje.forEach(debt => {
+            const li = document.createElement('li');
+            const valorFormatado = debt.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            
+            // Monta a linha com o nome e o valor formatado separados
+            li.innerHTML = `
+                <span>• ${debt.description}</span>
+                <span class="debt-value">${valorFormatado}</span>
+            `;
+            listContainer.appendChild(li);
+        });
+
+        // Revela o modal na tela trocando o estilo de oculto para flex
+        document.getElementById('customAlertModal').style.display = 'flex';
+    }
+}
+
+// Função corrigida para fechar a janela flutuante de alerta
+function closeCustomAlert() {
+    document.getElementById('customAlertModal').style.display = 'none';
 }

@@ -85,6 +85,29 @@
     </div>
 </div>
 
+<!-- NOVO: Janela de Alerta Personalizada (Modal) -->
+    <div id="customAlertModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box animate-pop">
+            <div class="modal-header">
+                <span class="modal-icon">⚠️</span>
+                <h2>Contas Vencendo Hoje!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Atenção! Você tem as seguintes pendências para quitar hoje:</p>
+                <ul id="alertDebtsList">
+                    <!-- As dívidas do dia vão aparecer aqui dentro via JavaScript -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal-close" onclick="closeCustomAlert()">Entendido, vou pagar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
 <script src="script.js"></script>
 </body>
 </html>
