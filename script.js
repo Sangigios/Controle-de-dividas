@@ -1,4 +1,4 @@
- // Inicializar lista buscando do LocalStorage ou criar array vazio
+  // Inicializar lista buscando do LocalStorage ou criar array vazio
 let debts = JSON.parse(localStorage.getItem('myDebts')) || [];
 
 // Definir a data de hoje por padrão no campo de vencimento ao carregar a página
