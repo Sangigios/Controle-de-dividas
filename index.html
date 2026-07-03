@@ -6,8 +6,8 @@
     <title>Controle de Dívidas Pessoais</title>
     <link rel="stylesheet" href="style.css">
 
-        <link rel="icon" type="image/png" href="icon.png">
-        <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
 
 </head>
 <body>
@@ -24,27 +24,26 @@
             <input type="hidden" id="editDebtId">
             
             <div class="form-grid">
-    <div class="form-group">
-        <label for="debtDate">Vencimento</label>
-        <input type="date" id="debtDate" required>
-    </div>
-    <div class="form-group">
-        <label for="debtDescription">Descrição</label>
-        <input type="text" id="debtDescription" placeholder="Ex: Internet, Cartão" required autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label for="debtValue">Valor (R$)</label>
-        <input type="number" id="debtValue" step="0.01" placeholder="0,00" required>
-    </div>
-    <div class="form-group-checkbox">
-        <input type="checkbox" id="debtRecurrent">
-        <label for="debtRecurrent">Repetir todo mês</label>
-    </div>
-    <div class="form-buttons">
-        <button type="submit" class="btn-add" id="btnSubmit">Adicionar</button>
-        <button type="button" class="btn-cancel" id="btnCancel" onclick="cancelEdit()" style="display: none;">Cancelar</button>
-    </div>
-</div>
+                <div class="form-group">
+                    <label for="debtDate">Vencimento</label>
+                    <input type="date" id="debtDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="debtDescription">Descrição</label>
+                    <input type="text" id="debtDescription" placeholder="Ex: Internet, Cartão" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="debtValue">Valor (R$)</label>
+                    <input type="number" id="debtValue" step="0.01" placeholder="0,00" required>
+                </div>
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="debtRecurrent">
+                    <label for="debtRecurrent">Repetir todo mês</label>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-add" id="btnSubmit">Adicionar</button>
+                    <button type="button" class="btn-cancel" id="btnCancel" onclick="cancelEdit()" style="display: none;">Cancelar</button>
+                </div>
             </div>
         </form>
     </div>
@@ -76,8 +75,7 @@
                     <th class="actions-cell">Ações</th>
                 </tr>
             </thead>
-            <tbody id="debtList">
-                </tbody>
+            <tbody id="debtList"></tbody>
         </table>
         <div id="emptyMessage" class="empty-state" style="display: none;">
             Nenhuma dívida encontrada.
@@ -89,25 +87,23 @@
     </div>
 </div>
 
-<!-- NOVO: Janela de Alerta Personalizada (Modal) -->
-    <div id="customAlertModal" class="modal-overlay" style="display: none;">
-        <div class="modal-box animate-pop">
-            <div class="modal-header">
-                <span class="modal-icon">⚠️</span>
-                <h2>Contas Vencendo Hoje!</h2>
-            </div>
-            <div class="modal-body">
-                <p>Atenção! Você tem as seguintes pendências para quitar hoje:</p>
-                <ul id="alertDebtsList">
-                    <!-- As dívidas do dia vão aparecer aqui dentro via JavaScript -->
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-modal-close" onclick="closeCustomAlert()">Entendido, vou pagar</button>
-            </div>
+<!-- Janela de Alerta Personalizada (Modal) -->
+<div id="customAlertModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box animate-pop">
+        <div class="modal-header">
+            <span class="modal-icon">⚠️</span>
+            <h2>Contas Vencendo Hoje!</h2>
+        </div>
+        <div class="modal-body">
+            <p>Atenção! Você tem as seguintes pendências para quitar hoje:</p>
+            <ul id="alertDebtsList"></ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal-close" onclick="closeCustomAlert()">Entendido, vou pagar</button>
         </div>
     </div>
+</div>
 
-<script src="script.js"></scriptscr>
+<script src="script.js"></script>
 </body>
 </html>
